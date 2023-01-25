@@ -1,3 +1,18 @@
+var vmc = {
+  github: function() {
+    fetch('https://github.com/login/oauth/authorize?client_id=85518c17cb43aa997eeb&redirect_uri=https://easterism.github.io/volvo-my-call/&state=asdasdasd',
+    {
+      method: "GET",
+      headers: { "Content-type": "application/x-www-form-urlencoded"}
+  })
+  .then(function (response) {
+      return response.json();
+  })
+  .then(
+    
+  )
+  }
+}
 
 
 // Register service worker to control making site work offline
