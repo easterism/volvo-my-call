@@ -1,18 +1,5 @@
 var vmc = {
-  github: function() {
-    fetch('https://github.com/login/oauth/authorize?client_id=85518c17cb43aa997eeb&redirect_uri=https://easterism.github.io/volvo-my-call/&state=asdasdasd',
-    {
-      method: "GET",
-      headers: { "Content-type": "application/x-www-form-urlencoded"}
-  })
-  .then(function (response) {
-      return response.json();
-  })
-  .then(
-    
-  )
-  },
-
+  
   makeApiRequest: function(apiKey) {
     var url = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet' +
       '&maxResults=3&playlistId=UU_x5XG1OV2P6uZZ5FSM9Ttw&key=' + apiKey;
