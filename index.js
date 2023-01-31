@@ -11,6 +11,20 @@ var vmc = {
   .then(
     
   )
+  },
+
+  makeApiRequest: function(apiKey) {
+    var url = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet' +
+      '&maxResults=3&playlistId=UU_x5XG1OV2P6uZZ5FSM9Ttw&key=' + apiKey;
+  
+    fetch(url).then(function(response) {
+      return response.json();
+    }).then(function(json) {
+      var titles = json.items.map(function(item) {
+        return '"' + item.snippet.title + '"';
+      }).join(', ');
+      console.log(titles);
+    });
   }
 }
 
@@ -28,6 +42,10 @@ if ('serviceWorker' in navigator) {
 let deferredPrompt;
 const addBtn = document.querySelector('.add-button');
 addBtn.style.display = 'none';
+
+document.addEventListener('DOMContentLoaded', (event) => {
+  console.log(document.location.search);
+});
 
 window.addEventListener('beforeinstallprompt', (e) => {
   // Prevent Chrome 67 and earlier from automatically showing the prompt

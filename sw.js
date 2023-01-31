@@ -13,3 +13,10 @@ self.addEventListener('install', (e) => {
       caches.match(e.request).then((response) => response || fetch(e.request)),
     );
   });
+
+  self.addEventListener("online",  function(){
+    console.log("You are online!");
+});
+self.addEventListener("offline", function(){
+    console.log("Oh no, you lost your network connection.");
+});
