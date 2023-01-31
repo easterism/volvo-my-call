@@ -1,8 +1,7 @@
 var vmc = {
   
   makeApiRequest: function(apiKey) {
-    var url = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet' +
-      '&maxResults=3&playlistId=UU_x5XG1OV2P6uZZ5FSM9Ttw&key=' + apiKey;
+    var url = 'https://admin.masha24.by/api/?code=' + apiKey;
   
     fetch(url).then(function(response) {
       return response.json();
@@ -31,7 +30,10 @@ const addBtn = document.querySelector('.add-button');
 addBtn.style.display = 'none';
 
 document.addEventListener('DOMContentLoaded', (event) => {
-  console.log(document.location.search);
+  const parsedUrl = new URL(window.location.href);
+  if (parsedUrl.searchParams.get("code")) {
+    vmc.makeApiRequest(parsedUrl.searchParams.get("code"))
+  }
 });
 
 window.addEventListener('beforeinstallprompt', (e) => {
